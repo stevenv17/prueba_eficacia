@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use DateTime;
+
 interface SaleInterface
 {
     /**
@@ -17,14 +19,14 @@ interface SaleInterface
     public function setId(int $id): void;
 
     /**
-     * @return string
+     * @return int
      */
-    public function getBillNumber(): string;
+    public function getBillNumber(): int;
 
     /**
-     * @param string $billNumber
+     * @param int $billNumber
      */
-    public function setBillNumber(string $billNumber): void;
+    public function setBillNumber(int $billNumber): void;
 
     /**
      * @return Product
@@ -105,4 +107,14 @@ interface SaleInterface
      * @param float $total
      */
     public function setTotal(float $total): void;
+
+    /**
+     * @return DateTime|null
+     */
+    public function getDeletedAt(): ?DateTime;
+
+    /**
+     * @param DateTime|null $deletedAt
+     */
+    public function setDeletedAt(?DateTime $deletedAt): void;
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Datetime;
 
 /**
  * Class Sale
@@ -26,9 +27,9 @@ class Sale implements SaleInterface
     protected $id;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="bill_number", type="string", length=64, nullable=false)
+     * @ORM\Column(name="bill_number", type="integer", nullable=false)
      */
     protected $billNumber;
 
@@ -91,6 +92,13 @@ class Sale implements SaleInterface
     protected $total;
 
     /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    protected $deletedAt;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -107,17 +115,17 @@ class Sale implements SaleInterface
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getBillNumber(): string
+    public function getBillNumber(): int
     {
         return $this->billNumber;
     }
 
     /**
-     * @param string $billNumber
+     * @param int $billNumber
      */
-    public function setBillNumber(string $billNumber): void
+    public function setBillNumber(int $billNumber): void
     {
         $this->billNumber = $billNumber;
     }
@@ -248,6 +256,22 @@ class Sale implements SaleInterface
     public function setTotal(float $total): void
     {
         $this->total = $total;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getDeletedAt(): ?DateTime
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param DateTime|null $deletedAt
+     */
+    public function setDeletedAt(?DateTime $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 
 }

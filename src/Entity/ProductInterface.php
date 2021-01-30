@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use DateTime;
 
 interface ProductInterface
 {
@@ -66,5 +67,15 @@ interface ProductInterface
      * @param float $iva
      */
     public function setIva(float $iva): void;
+
+    /**
+     * @return DateTime|null
+     */
+    public function getDeletedAt(): ?DateTime;
+
+    /**
+     * @param DateTime|null $deletedAt
+     */
+    public function setDeletedAt(?DateTime $deletedAt): void;
 
 }

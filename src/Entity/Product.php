@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * Class Product
@@ -59,6 +60,13 @@ class Product implements ProductInterface
      * @ORM\Column(name="iva", type="float", nullable=false)
      */
     protected $iva;
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    protected $deletedAt;
 
     /**
      * @return int
@@ -154,6 +162,22 @@ class Product implements ProductInterface
     public function setIva(float $iva): void
     {
         $this->iva = $iva;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getDeletedAt(): ?DateTime
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param DateTime|null $deletedAt
+     */
+    public function setDeletedAt(?DateTime $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 
 }
