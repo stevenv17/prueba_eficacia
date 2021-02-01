@@ -8,7 +8,7 @@ que la tabla de productos deberia tener un campo de cantidad. También en cada v
 3. Crearía un comando y lo programaria en CRON para que se ejecute una vez al día. El comando haría una petición con el archivo al webservice.
 
 
-# Instrucciones
+# Instrucciones (punto 1)
 
 
 **Base de datos (en raiz de proyecto):**
