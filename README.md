@@ -16,7 +16,7 @@ Composer install
 
 ``` sudo symfony server:start ```
 
-**Usar API: **
+**Usar API:**
 
 Descargar insomnia (es probable que también se pueda importar en Postman) e importar las peticiones del archivo **Insomnia_2021-02-01** que se encuentra en la raiz.
 
