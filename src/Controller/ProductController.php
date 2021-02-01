@@ -41,6 +41,11 @@ class ProductController extends AbstractController
         $data = json_decode($request->getContent(), true);
         $data['id'] = null;
         $product = $this->getDoctrine()->getRepository(Product::class)->createOrEditProduct($data);
+        
+        if(gettype($product) === 'string'){
+            $response->setData(['success' => false, 'message' => $product]);
+            return $response;
+        }
 
         $serializer = $this->container->get('serializer');
         $product_json = json_decode($serializer->serialize($product, 'json'), true);
@@ -68,6 +73,11 @@ class ProductController extends AbstractController
             return $response;
         }
         $product = $this->getDoctrine()->getRepository(Product::class)->createOrEditProduct($data);
+
+        if(gettype($product) === 'string'){
+            $response->setData(['success' => false, 'message' => $product]);
+            return $response;
+        }
 
         $serializer = $this->container->get('serializer');
         $product_json = json_decode($serializer->serialize($product, 'json'), true);

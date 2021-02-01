@@ -39,6 +39,13 @@ class SaleController extends AbstractController
         $response = new JsonResponse();
 
         $data = json_decode($request->getContent(), true);
+
+        $validations_result = $this->validations($data['products']);
+        if(!empty($validations_result)){
+            $response->setData(['success' => false, 'message' => $validations_result]);
+            return $response;
+        }
+
         $billNumber = $this->getDoctrine()->getRepository(Sale::class)->sell($data['products'], $data['customer']);
 
         $sales = $this->getDoctrine()->getRepository(Sale::class)->findBy(['billNumber' => $billNumber]);
@@ -64,6 +71,21 @@ class SaleController extends AbstractController
         );
 
         return $response;
+    }
+
+    /**
+     * @param $products
+     * @return string
+     */
+    private function validations($products): string
+    {
+        $mesagge= '';
+        foreach ($products as $product){
+            if($product['quantity']< 1){
+                $mesagge = 'quantity cannot be less than 1';
+            }
+        }
+        return $mesagge;
     }
 
 }

@@ -15,16 +15,20 @@ class ProductRepository extends EntityRepository
 
     /**
      * @param $data
-     * @return Product
+     * @return Product|object|string|null
      */
-    public function createOrEditProduct($data): Product
+    public function createOrEditProduct($data)
     {
-        //validar data aqui °°°°°°
-
         if(empty($data['id'])){
             $product = new Product();
         }else{
             $product = $this->_em->getRepository(Product::class)->find($data['id']);
+        }
+
+        $validation_result = $this->validations($data);
+
+        if(!empty($validation_result)){
+            return $validation_result;
         }
 
         $product->setSku($data['sku']);
@@ -65,6 +69,30 @@ class ProductRepository extends EntityRepository
         $product->setDeletedAt($now);
 
         return $this->save($product);
+    }
+
+    /**
+     * @param $data
+     * @return string
+     */
+    private function validations($data): string
+    {
+        $message = '';
+
+        if(empty($data['sku'])){
+            $message = "sku cannot be empty";
+        }
+        if(empty($data['name'])){
+            $message = "name cannot be empty";
+        }
+        if($data['price'] < 0){
+            $message = "price cannot be less than 0";
+        }
+        if($data['iva'] < 0 || $data['iva'] > 100){
+            $message = "iva: 0-100%";
+        }
+
+        return $message;
     }
 
 }
