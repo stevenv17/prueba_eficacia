@@ -6,6 +6,11 @@
 1. prueba_eficacia.sql
 2. cambiar variable de entorno **DATABASE_URL** en archivo **.env** según corresponda a credenciales de MYSQL.
 
+**Instalación de dependencias (se recomienda versión 1.10.19 de Composer):**
+```
+Composer install
+```
+
 
 **Correr app (es necesario tener instalado symfony):**
 
@@ -19,8 +24,7 @@ Descargar insomnia (es probable que también se pueda importar en Postman) e imp
 **Consideraciones:**
 
 1. Es recomendable la versión 7.4.13 de PHP
-2. En caso de tener que instalar depenencias, se recomienda el uso de la versión 1.10.19 de Composer. Posteriormente correr : Composer install
-3. Otros comandos que podrían llegar a ser de ayuda:
+2. Otros comandos que podrían llegar a ser de ayuda:
 
 ```
 sudo apt-get -y update && apt-get -y upgrade
