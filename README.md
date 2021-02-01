@@ -1,3 +1,13 @@
+# Respuestas (punto 2):
+
+1. Para manejar un inventario, lo primero que se tiene que hacer es tener un campo que permita saber cuantos productos hay de cada tipo, es decir
+que la tabla de productos deberia tener un campo de cantidad. También en cada venta se deberían ir restando. Por último en la tabla de ventar se podría tener un campo de estado, por si el producto fue devuelto, esos no contarian como productos que salieron sino que aún permanecen.
+
+2. El reporte de ventas se puede hacer por medio de una consulta a la tabla de ventas, allí se encontraria el valor a detalle de cada producto que se vendío (gracias a la relaciín con la tabla de productos), su iva, la cantidad, etc. También se podría agregar un campo de estado para saber si algo fue devuelto y que ya no sería parte de dicho reporte.
+
+3. Crearía un comando y lo programaria en CRON para que se ejecute una vez al día. El comando haría una petición con el archivo al webservice.
+
+
 # Instrucciones
 
 
