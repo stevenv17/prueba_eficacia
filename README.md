@@ -34,7 +34,8 @@ Descargar insomnia (es probable que también se pueda importar en Postman) e imp
 **Consideraciones:**
 
 1. Es recomendable la versión 7.4.13 de PHP
-2. Otros comandos que podrían llegar a ser de ayuda:
+2. Prueba desarrollada sobre Ubuntu 20.04
+3. Otros comandos que podrían llegar a ser de ayuda:
 
 ```
 sudo apt-get -y update && apt-get -y upgrade
